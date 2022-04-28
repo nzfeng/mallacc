@@ -10,16 +10,16 @@ import functools
 import getpass
 from multiprocessing import Pool
 
-import xiosim_driver as xd
-import masstree
-import spec
-import tcubench
-import xapianbench
-import condor
+import xiosim_driver as xd # XIOSim/scripts
+import masstree # mallac/scripts/sim_runs/
+import spec # XIOSim/scripts
+import tcubench # mallac/scripts/sim_runs/
+import xapianbench # mallac/scripts/sim_runs/
+import condor # mallac/scripts/sim_runs/
 
 USER = getpass.getuser()
 # Configuration params
-RUN_DIR_ROOT = "/home/%s/malloc_out" % USER  # Benchmarks will execute in subdirectories of this
+RUN_DIR_ROOT = "/usr0/home/nfeng/Documents/Courses/15-712/malloc_out"  # Benchmarks will execute in subdirectories of this
 CONFIG_FILE = "xiosim/config/H.cfg"      # Starting config file (relative to XIOSIM_TREE)
 
 profiled_funcs = ["tc_malloc",
@@ -104,6 +104,7 @@ def CreateDriver(env=""):
         if ARCH == "k8":
             ld_env += "64"
         env = EnvAppend(env, ld_env)
+
     xio = xd.XIOSimDriver(XIOSIM_INSTALL, XIOSIM_TREE, ARCH,
                           clean_arch=True, env=env)
     return xio
@@ -134,11 +135,11 @@ def GetRuns(category):
     runs = []
     if category == "ubench":
         runs.append(tcubench.GetRun("ubench.tp"))
-        runs.append(tcubench.GetRun("ubench.gauss"))
-        runs.append(tcubench.GetRun("ubench.gauss_free"))
-        runs.append(tcubench.GetRun("ubench.antagonist"))
-        runs.append(tcubench.GetRun("ubench.tp_small"))
-        runs.append(tcubench.GetRun("ubench.sized_deletes"))
+        # runs.append(tcubench.GetRun("ubench.gauss"))
+        # runs.append(tcubench.GetRun("ubench.gauss_free"))
+        # runs.append(tcubench.GetRun("ubench.antagonist"))
+        # runs.append(tcubench.GetRun("ubench.tp_small"))
+        # runs.append(tcubench.GetRun("ubench.sized_deletes"))
     elif category == "spec":
         runs.append(spec.GetRun("400.perlbench.diffmail"))
         runs.append(spec.GetRun("465.tonto.tonto"))
@@ -158,8 +159,8 @@ def GetRuns(category):
         runs.append(xapianbench.GetRun("xapian.query_wiki_pages.9"))
         runs.append(xapianbench.GetRun("xapian.query_wiki_pages.10"))
     elif category == "masstree":
-        runs.append(masstree.GetRun("masstree.ycsb"))
-        # runs.append(masstree.GetRun("masstree.same"))
+        runs.append(masstree.GetRun("masstree.wcol1"))
+        runs.append(masstree.GetRun("masstree.same"))
     return runs
 
 def GetNextRunNumber(directory):
@@ -213,7 +214,7 @@ def ConfigureSimRun(bmk_run, optimizations, delete_existing_runs, trace):
         xio.AddPinPointFile(ppfile)
     elif bmk_run.NeedsROI():
         xio.AddROIOptions()
-
+        
     xio.cmd += "-pthreads "
     # for now, hits some weird deadlock
     if bmk_run.bmk.startswith("masstree"):
@@ -257,8 +258,8 @@ def ConfigureAndRun(bmks, opts, how_to_run, directory="",
     if how_to_run == "native":
         pool = Pool(processes=4)
         pool.map(RunRun, sim_runs)
-#        for r in sim_runs:
-#            RunRun(r)
+        # for r in sim_runs:
+        #     RunRun(r)
     elif how_to_run == "condor":
         print "Preparing to write condor out."
         condor_out = "sim.con"

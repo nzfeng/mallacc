@@ -7,7 +7,8 @@ import bmk
 
 USER = getpass.getuser()
 
-benchDir = '/home/%s/xapian/benchmarks' % USER
+# benchDir = '/home/%s/xapian/benchmarks' % USER
+benchDir = '/usr0/home/nfeng/Documents/Courses/15-712/xapian/benchmarks'
 
 class XapianBenchRun(bmk.BenchmarkRun):
 

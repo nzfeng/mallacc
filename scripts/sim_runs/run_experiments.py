@@ -9,21 +9,22 @@ import run_profiles
 
 # Sequence of optimizations to run.
 opts = {
-#     "ubench" : ["baseline", "real-sampling", "real-size-class", "real-list", "realistic", "limit"]
-#     "spec" : ["baseline", "all"],
-#     "xapian": ["baseline", "all"],
-    "masstree": ["baseline"]
+    # "ubench" : ["baseline", "real-sampling", "real-size-class", "real-list", "realistic", "limit"]
+    "ubench" : ["baseline", "realistic"] # no Mallacc, Mallacc-enabled
+    # "spec" : ["baseline", "all"],
+    # "xapian": ["baseline", "all"],
 }
 
 user = getpass.getuser()
 
 def RunOptimized(bmk_set, opt, clean_start):
     run_profiles.ConfigureAndRun(
-        bmk_set, opt, "condor",
+        bmk_set, opt, "native", # used to be "condor"; run on current host instead
         delete_existing_runs=clean_start)
-    condor_file = "sim_%s_%s.con" % (bmk_set, opt)
-    os.rename("sim.con", condor_file)
-    os.system("condor_submit %s" % condor_file)
+
+    # condor_file = "sim_%s_%s.con" % (bmk_set, opt)
+    # os.rename("sim.con", condor_file)
+    # os.system("condor_submit %s" % condor_file)
 
 def main():
     parser = argparse.ArgumentParser()

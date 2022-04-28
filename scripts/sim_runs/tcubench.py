@@ -2,17 +2,20 @@
 import getpass
 import os.path
 
-import bmk
+import bmk # /XIOSim/scripts/
 
 USER = getpass.getuser()
 
 # Configuration params
-benchDir = '/home/%s/gperftools/output_all_magic' % USER
+# benchDir = '/home/%s/gperftools/output_all_magic' % USER
+benchDir = '/usr0/home/nfeng/Documents/Courses/15-712/gperftools/output'
+# benchDir = '/usr0/home/%s/Documents/Courses/15-712/gperftools/output_all_magic' % USER
+EXECUTABLE_DIR = '/usr0/home/nfeng/Documents/Courses/15-712/gperftools/build/'
 
 class TCUBenchRun(bmk.BenchmarkRun):
 
     def __init__(self, bmk, executable, args, input, output, error, name, expected, env=""):
-        super(TCUBenchRun, self).__init__(bmk, executable, args, input, output, error, name, expected, env=env)
+        super(TCUBenchRun, self).__init__(bmk,  executable, args, input, output, error, name, expected, env=env)
         self.needs_pin_points = False
         self.needs_roi = True
 
@@ -21,12 +24,12 @@ class TCUBenchRun(bmk.BenchmarkRun):
 
 runs = [
     TCUBenchRun('ubench', 'tp', '', '', '', '', 'tp', [], ""),
-    TCUBenchRun('ubench', 'tp_dep', '', '', '', '', 'tp_dep', [], ""),
-    TCUBenchRun('ubench', 'gauss', '', '', '', '', 'gauss', [], ""),
-    TCUBenchRun('ubench', 'gauss_free', '', '', '', '', 'gauss_free', [], ""),
-    TCUBenchRun('ubench', 'antagonist', '', '', '', '', 'antagonist', [], ""),
-    TCUBenchRun('ubench', 'tp_small', '', '', '', '', 'tp_small', [], ""),
-    TCUBenchRun('ubench', 'sized_deletes', '', '', '', '', 'sized_deletes', [], ""),
+    # TCUBenchRun('ubench', 'tp_dep', '', '', '', '', 'tp_dep', [], ""),
+    # TCUBenchRun('ubench', 'gauss', '', '', '', '', 'gauss', [], ""),
+    # TCUBenchRun('ubench', 'gauss_free', '', '', '', '', 'gauss_free', [], ""),
+    # TCUBenchRun('ubench', 'antagonist', '', '', '', '', 'antagonist', [], ""),
+    # TCUBenchRun('ubench', 'tp_small', '', '', '', '', 'tp_small', [], ""),
+    # TCUBenchRun('ubench', 'sized_deletes', '', '', '', '', 'sized_deletes', [], ""),
 ]
 
 def GetRun(name):

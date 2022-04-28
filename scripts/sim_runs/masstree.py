@@ -8,7 +8,7 @@ USER = getpass.getuser()
 
 # Configuration params
 # benchDir = '/home/%s/masstree-beta/install_all_magic' % USER
-benchDir = '/home/%s/masstree-beta/install_tb' % USER
+benchDir = '/usr0/home/%s/Documents/Courses/15-712/masstree-beta/install_all_magic' % USER
 
 class MTBenchRun(bmk.BenchmarkRun):
 
@@ -21,9 +21,8 @@ class MTBenchRun(bmk.BenchmarkRun):
         return benchDir
 
 runs = [
-    MTBenchRun('masstree', 'mttest_integrated', '-j1 mycsba masstree', '', '', '', 'ycsb', [".git"],
-        "TBENCH_QPS=100 TBENCH_MAXREQS=3000 TBENCH_WARMUPREQS=14000 TBENCH_MINSLEEPNS=10000"),
-    # MTBenchRun('masstree', 'mttest', '-j1 --no-notebook -l 10000000 same', '', '', '', 'same', [".git"], ""),
+    MTBenchRun('masstree', 'mttest', '-j1 --no-notebook wcol1', '', '', '', 'wcol1', [".git"], ""),
+    MTBenchRun('masstree', 'mttest', '-j1 --no-notebook -l 10000000 same', '', '', '', 'same', [".git"], ""),
 ]
 
 def GetRun(name):
