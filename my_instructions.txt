@@ -5,7 +5,7 @@ The custom gperftools repo has something in its README that maybe we have to pay
 Previously got a bunch of errors when trying to compile XIOSim using Bazel. I ran the commands
 `bazel test xiosim:/...:all'
 `bazel build xiosim/...:all'
-and tried to build everything inside the xiosim directory and then ran `build bazel --copt=Wno-error :xiosim" and stuff seemingly worked?
+and tried to build everything inside the xiosim directory and then ran `bazel build --copt=Wno-error :xiosim" and stuff seemingly worked?
 
 ------------------------------------------------------------------------------------------------------------------------
 export XIOSIM_TREE=/usr0/home/nfeng/Documents/Courses/15-712/XIOSim
@@ -57,5 +57,15 @@ malloc_out
 
 Then need to call parse_results.py with the cache_sweep flag set:
 
-python parse_results.py read --results-dir ../../malloc_out --db speedup.db --is-cache-sweep true
+python parse_results.py read --results-dir ../../malloc_out --db speedup.db --is-cache-sweep
 
+
+To transfer ownership of output data from sudo to nfeng:
+sudo chown -R nfeng [malloc_out]
+------------------------------------------------------------------------------------------------------------------------
+To run my own parsing code: In mallacc/my_scripts, run
+
+```
+python fast_path_data.py [mode] --db ../scripts/speedup.db
+```
+where mode = {speedup, hit-rates, cache-sweep}

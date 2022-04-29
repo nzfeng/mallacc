@@ -19,7 +19,8 @@ import condor # mallac/scripts/sim_runs/
 
 USER = getpass.getuser()
 # Configuration params
-RUN_DIR_ROOT = "/usr0/home/nfeng/Documents/Courses/15-712/malloc_out"  # Benchmarks will execute in subdirectories of this
+CACHE_SIZE = 16 # need to also set this in H.cfg!!!
+RUN_DIR_ROOT = "/usr0/home/nfeng/Documents/Courses/15-712/malloc_out/%d"  %CACHE_SIZE # Benchmarks will execute in subdirectories of this
 CONFIG_FILE = "xiosim/config/H.cfg"      # Starting config file (relative to XIOSIM_TREE)
 
 profiled_funcs = ["tc_malloc",

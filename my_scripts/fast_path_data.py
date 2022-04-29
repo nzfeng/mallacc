@@ -19,6 +19,7 @@ def plot_stacked_speedup(db):
 	cursor = conn.cursor()
 	bmarks, _ = get_ubenchmarks(db)
 	runs = get_all_runs(db)
+	print bmarks
 
 	# All total cycles across runs in a 3D array.
 	all_runs_avg_call_length = np.zeros((len(runs), len(opts), len(bmarks)))
@@ -61,43 +62,46 @@ def plot_hit_rates(db):
 	cache_sizes = get_cache_sizes(cursor)
 	runs = get_all_runs(db)
 
+	print bmarks
 	baseline = "baseline"
 	realistic = "realistic"
 	stats = ["size_hits", "size_misses", "head_hits", "head_misses"]
 
-	# TODO
 	bmark_labels = []
-    all_data = []
-    all_run_size = np.zeros((len(runs), len(cache_sizes), len(bmarks)))
-    all_run_head = np.zeros((len(runs), len(cache_sizes), len(bmarks)))
+	all_data = []
+	all_run_size = np.zeros((len(runs), len(cache_sizes), len(bmarks)))
+	all_run_head = np.zeros((len(runs), len(cache_sizes), len(bmarks)))
 
-    # Collect all data across all runs.
-    print "Collecting data for all realistic speedups."
-    for run in runs:
-        all_size_data = []
-        all_head_data = []
-        for size in cache_sizes:
-            bmark_size_data = []
-            bmark_head_data = []
-            for bmark in bmarks:
-                # print "Getting data for", bmark
-                bmark_labels.append(bmark[7:])
-                data = get_sim_stats(cursor, stats, bmark, realistic, run, cache_size=size)
-                size_hit_rate = 100*float(data[0])/(data[0] + data[1])
-                head_hit_rate = 100*float(data[2])/(data[2] + data[3])
-                bmark_size_data.append(size_hit_rate)
-                bmark_head_data.append(head_hit_rate)
-            all_size_data.append(bmark_size_data)
-            all_head_data.append(bmark_head_data)
-        all_run_size[run, :] = np.array(all_size_data)
-        all_run_head[run, :] = np.array(all_head_data)
+	# Collect all data across all runs.
+	print "Collecting all data..."
+	print cache_sizes
+	for run in runs:
+		all_size_data = []
+		all_head_data = []
+		for size in cache_sizes:
+			bmark_size_data = []
+			bmark_head_data = []
+			for bmark in bmarks:
+				# print "Getting data for", bmark
+				bmark_labels.append(bmark[7:])
+				data = get_sim_stats(cursor, stats, bmark, realistic, run, cache_size=size)
+				size_hit_rate = 100*float(data[0])/(data[0] + data[1])
+				head_hit_rate = 100*float(data[2])/(data[2] + data[3])
+				bmark_size_data.append(size_hit_rate)
+				bmark_head_data.append(head_hit_rate)
+			all_size_data.append(bmark_size_data)
+			all_head_data.append(bmark_head_data)
+		all_run_size[run, :] = np.array(all_size_data)
+		all_run_head[run, :] = np.array(all_head_data)
 
-    mean_size_data = np.mean(all_run_size, axis=0).astype(float)
-    mean_head_data = np.mean(all_run_head, axis=0).astype(float)
-    print mean_size_data
-    print mean_head_data
-    std_size = np.std(all_run_size, axis=0).astype(float)
-    std_head = np.std(all_run_head, axis=0).astype(float)
+	mean_size_data = np.mean(all_run_size, axis=0).astype(float) # mean hit rate for size classes
+	mean_head_data = np.mean(all_run_head, axis=0).astype(float) # mean hit rate for HEAD pointer
+	print mean_size_data 
+	print mean_head_data
+	std_size = np.std(all_run_size, axis=0).astype(float)
+	std_head = np.std(all_run_head, axis=0).astype(float)
+	print std_size 
+	print std_head
 
 	conn.close()
 
@@ -119,7 +123,7 @@ def main():
     if args.mode == "speedup":
         plot_stacked_speedup(args.db)
     elif args.mode == "hit-rates":
-        pass
+        plot_hit_rates(args.db)
     elif args.mode == "cache-sweep":
         pass
 

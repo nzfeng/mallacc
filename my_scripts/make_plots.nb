@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     44276,        962]
-NotebookOptionsPosition[     43304,        940]
-NotebookOutlinePosition[     43703,        956]
-CellTagsIndexPosition[     43660,        953]
+NotebookDataLength[     44085,        961]
+NotebookOptionsPosition[     43179,        938]
+NotebookOutlinePosition[     43582,        954]
+CellTagsIndexPosition[     43539,        951]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -519,6 +519,8 @@ Cell[BoxData[
   3.860076861950487*^9}},ExpressionUUID->"0864f63f-844d-43b2-9282-\
 b289f08b7fc4"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  RowBox[{
   RowBox[{"(*", " ", 
@@ -595,23 +597,23 @@ Cell[BoxData[
          RowBox[{
           RowBox[{"{", 
            RowBox[{
-           "\"\<tp\>\"", ",", " ", "\"\<tp_small\>\"", ",", 
-            "\"\<sized_deletes\>\"", ",", "\"\<gauss\>\"", ",", 
-            "\"\<gauss_free\>\"", ",", "\"\<antagonist\>\""}], "}"}], ",", 
+           "\"\<antagonist\>\"", ",", "\"\<gauss\>\"", ",", 
+            "\"\<gauss_free\>\"", ",", "\"\<sized_deletes\>\"", ",", 
+            "\"\<tp\>\"", ",", " ", "\"\<tp_small\>\""}], "}"}], ",", 
           "Left"}], "]"}]}]}], "]"}], ",", 
      RowBox[{"{", "\"\<Fast path cycles improvement (%)\>\"", "}"}], ",", 
      RowBox[{"{", "Bottom", "}"}]}], "]"}]}]}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQBWIQHfbvvHvzoTeO+uev+oDotJzAW8uB9DRV8Tsg2unX
+1:eJxTTMoPSmViYGAQA2IQHfbvvHvzoTeO+uev+oDotJzAW8uB9DRV8Tsg2unX
 9EcgWj1j6ksQrcNa+A5Eu/zZCaZPZOh+BdGNsde+gegtiot+gehNk67+BdFH
 flQyrQDSz9oS2ED0I69GbhD97sdKIRA9b3GYAYjeHzLfEkTv4OC1A9EcGf1O
 IDpvb5E7iGZZIxsEogMiXLJAdOOrnDwQ7dqUXwSiH8bHVYLo1zvZGkD0nZCF
 YPrT5uRWEF3T/aYLRIdXTZoCor9ozgPTvyzsGtYB6a47Z5pB9LI8tmUguomv
-ZhWIVgi5z7AeFB4/dRhB9OP8cD4Q3TZJQgREv/mSmL8RSAtYnSsA0QBpX8NQ
-
+ZhWIVgi5z7AeFB4/dRhB9OP8cD4Q3TZJQgREv/mSmL8RSAtYnSsA0VwszlOu
+AWkT9w8zQDQA3kTLww==
   "],
  CellLabel->
-  "In[334]:=",ExpressionUUID->"b294863a-9ec1-4ef0-bd96-4123091a8337"],
+  "In[350]:=",ExpressionUUID->"b294863a-9ec1-4ef0-bd96-4123091a8337"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -781,35 +783,35 @@ Cell[BoxData[
             Style[4.428940417698035, {}], "Tooltip"]& ]}}}, {}, {}}, {}, {
        InsetBox[
         FormBox[
-         StyleBox["\"tp\"", {}, StripOnInput -> False], TraditionalForm], 
+         StyleBox["\"antagonist\"", {}, StripOnInput -> False], 
+         TraditionalForm], 
         Offset[{6, 0}, {0., 1.}], 
         ImageScaled[{0, 0.5}]], 
        InsetBox[
         FormBox[
-         StyleBox["\"tp_small\"", {}, StripOnInput -> False], 
-         TraditionalForm], 
-        Offset[{6, 0}, {0., 2.}], 
-        ImageScaled[{0, 0.5}]], 
-       InsetBox[
-        FormBox[
-         StyleBox["\"sized_deletes\"", {}, StripOnInput -> False], 
-         TraditionalForm], 
-        Offset[{6, 0}, {0., 3.}], 
-        ImageScaled[{0, 0.5}]], 
-       InsetBox[
-        FormBox[
          StyleBox["\"gauss\"", {}, StripOnInput -> False], TraditionalForm], 
-        Offset[{6, 0}, {0., 4.}], 
+        Offset[{6, 0}, {0., 2.}], 
         ImageScaled[{0, 0.5}]], 
        InsetBox[
         FormBox[
          StyleBox["\"gauss_free\"", {}, StripOnInput -> False], 
          TraditionalForm], 
+        Offset[{6, 0}, {0., 3.}], 
+        ImageScaled[{0, 0.5}]], 
+       InsetBox[
+        FormBox[
+         StyleBox["\"sized_deletes\"", {}, StripOnInput -> False], 
+         TraditionalForm], 
+        Offset[{6, 0}, {0., 4.}], 
+        ImageScaled[{0, 0.5}]], 
+       InsetBox[
+        FormBox[
+         StyleBox["\"tp\"", {}, StripOnInput -> False], TraditionalForm], 
         Offset[{6, 0}, {-0.02159007867699539, 5.}], 
         ImageScaled[{0, 0.5}]], 
        InsetBox[
         FormBox[
-         StyleBox["\"antagonist\"", {}, StripOnInput -> False], 
+         StyleBox["\"tp_small\"", {}, StripOnInput -> False], 
          TraditionalForm], 
         Offset[{6, 0}, {0., 6.}], 
         ImageScaled[{0, 0.5}]]}, {}, {}, {
@@ -928,18 +930,14 @@ Cell[BoxData[
   InterpretationFunction->(RowBox[{"Labeled", "[", 
      RowBox[{#, ",", 
        RowBox[{"{", #2, "}"}], ",", 
-       RowBox[{"{", "Bottom", "}"}]}], "]"}]& )]], "Input",
- CellChangeTimes->{3.8601668452673473`*^9},
+       RowBox[{"{", "Bottom", "}"}]}], "]"}]& )]], "Output",
+ CellChangeTimes->{3.8602477517519217`*^9},
  CellLabel->
-  "Out[341]=",ExpressionUUID->"f64bd7ca-8b25-4c36-bf23-5c88b272cea2"],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.8601520277181063`*^9, 3.860152027830412*^9}, 
-   3.860152410848517*^9},ExpressionUUID->"f28c3f7f-4893-4962-a187-\
-ccf42a4d1518"]
+  "Out[357]=",ExpressionUUID->"ea8b19df-47cf-4ca8-aa57-65ac62dafd6f"]
+}, Open  ]]
 },
 WindowSize->{895.5, 675.75},
-WindowMargins->{{Automatic, 471}, {148.5, Automatic}},
+WindowMargins->{{Automatic, 213.75}, {Automatic, 152.25}},
 FrontEndVersion->"12.1 for Linux x86 (64-bit) (June 19, 2020)",
 StyleDefinitions->"Default.nb",
 ExpressionUUID->"2475acde-95ca-496a-bd4f-5be0b79101a4"
@@ -961,9 +959,10 @@ Cell[1645, 50, 1537, 29, 71, "Input",ExpressionUUID->"5ae4c756-a95e-4cc2-8fea-34
 Cell[3185, 81, 22526, 420, 304, "Output",ExpressionUUID->"93071e00-d335-4e7b-8416-18a10aab5758"]
 }, Open  ]],
 Cell[25726, 504, 605, 15, 51, "Input",ExpressionUUID->"0864f63f-844d-43b2-9282-b289f08b7fc4"],
-Cell[26334, 521, 3711, 92, 279, "Input",ExpressionUUID->"b294863a-9ec1-4ef0-bd96-4123091a8337"],
-Cell[30048, 615, 13072, 318, 282, InheritFromParent,ExpressionUUID->"f64bd7ca-8b25-4c36-bf23-5c88b272cea2"],
-Cell[43123, 935, 177, 3, 29, "Input",ExpressionUUID->"f28c3f7f-4893-4962-a187-ccf42a4d1518"]
+Cell[CellGroupData[{
+Cell[26356, 523, 3731, 92, 279, "Input",ExpressionUUID->"b294863a-9ec1-4ef0-bd96-4123091a8337"],
+Cell[30090, 617, 13073, 318, 285, "Output",ExpressionUUID->"ea8b19df-47cf-4ca8-aa57-65ac62dafd6f"]
+}, Open  ]]
 }
 ]
 *)
